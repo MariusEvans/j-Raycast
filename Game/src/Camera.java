@@ -6,8 +6,8 @@ public class Camera implements KeyListener
 {
 	public double xPos, yPos, xDir, yDir, xPlane, yPlane;
 	public boolean left, right, forward, back;
-	public final double MOVE_SPEED = .08;
-	public final double ROTATION_SPEED = .045;
+	public double MOVE_SPEED = .08;
+	public double ROTATION_SPEED = .045;
 	
 	public Camera(double x, double y, double xd, double yd, double xp, double yp) 
 	{
@@ -29,6 +29,13 @@ public class Camera implements KeyListener
 			forward = true;
 		if((key.getKeyCode() == KeyEvent.VK_DOWN))
 			back = true;
+		if((key.getKeyCode() == KeyEvent.VK_CAPS_LOCK))
+		{
+			//capslock = true;
+			System.out.println("SPEED BOOST");
+			MOVE_SPEED = .99;
+			ROTATION_SPEED = .060;
+		}
 	}
 	
 	public void keyReleased(KeyEvent key) 
@@ -41,6 +48,13 @@ public class Camera implements KeyListener
 			forward = false;
 		if((key.getKeyCode() == KeyEvent.VK_DOWN))
 			back = false;
+		if((key.getKeyCode() == KeyEvent.VK_CAPS_LOCK))
+		{
+			//capslock = false;
+			System.out.println("SPEED BOOST GONE");
+			MOVE_SPEED = .08;
+			ROTATION_SPEED = .045;
+		}
 	}
 	
 	public void update(int[][] map) 
