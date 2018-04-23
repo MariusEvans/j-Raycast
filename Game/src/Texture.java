@@ -9,7 +9,7 @@ public class Texture
 	private String loc;
 	public final int SIZE;
 	
-	public Texture(String location, int size) 
+	public Texture(String location, int size) //for creating objects of textures
 	{
 		loc = location;
 		SIZE = size;
@@ -21,7 +21,7 @@ public class Texture
 	{
 		try 
 		{
-			BufferedImage image = ImageIO.read(new File(loc));
+			BufferedImage image = ImageIO.read(new File(loc)); //read image from location
 			int w = image.getWidth();
 			int h = image.getHeight();
 			image.getRGB(0, 0, w, h, pixels, 0, w);
@@ -32,8 +32,8 @@ public class Texture
 		}
 	}
 	
-	public static Texture wood = new Texture("res/wood.png", 64);
-	public static Texture brick = new Texture("res/redbrick.png", 64);
-	public static Texture bluestone = new Texture("res/bluestone.png", 64);
-	public static Texture stone = new Texture("res/greystone.png", 64);
+	public static Texture wood = new Texture("res/wood.bmp", 64);
+	public static Texture greystone = new Texture("res/greystone.bmp", 64);
+	public static Texture redbrick = new Texture("res/redbrick.bmp", 64);
+	public static Texture stone = new Texture("res/stonewall.bmp", 64);
 }
