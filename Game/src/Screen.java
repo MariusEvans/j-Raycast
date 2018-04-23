@@ -21,11 +21,11 @@ public class Screen
 	{
 		for(int n=0; n<pixels.length/2; n++) 
 		{
-			if(pixels[n] != Color.blue.getRGB()) pixels[n] = Color.blue.getRGB();//for the ceiling
+			if(pixels[n] != Color.DARK_GRAY.getRGB()) pixels[n] = Color.DARK_GRAY.getRGB();//for the ceiling
 		}
 		for(int i=pixels.length/2; i<pixels.length; i++) 
 		{
-			if(pixels[i] != Color.orange.getRGB()) pixels[i] = Color.orange.getRGB(); //for the floor
+			if(pixels[i] != Color.gray.getRGB()) pixels[i] = Color.gray.getRGB(); //for the floor
 		}
 	    
 	    for(int x=0; x<width; x=x+1) 
@@ -36,8 +36,8 @@ public class Screen
 		    //Map position
 		    int mapX = (int)camera.xPos;
 		    int mapY = (int)camera.yPos;
-		    System.out.println(x+" X POSITION: "+mapX);
-		    System.out.println(x+" Y POSITION: "+mapY);
+		    //System.out.println(x+" X POSITION: "+mapX);
+		    //System.out.println(x+" Y POSITION: "+mapY);
 		    
 		    //length of ray from current position to next x or y-side
 		    double sideDistX;
@@ -97,10 +97,12 @@ public class Screen
 		    	perpWallDist = Math.abs((mapX - camera.xPos + (1 - stepX) / 2) / rayDirX);
 		    else
 		    	perpWallDist = Math.abs((mapY - camera.yPos + (1 - stepY) / 2) / rayDirY);	
+		   
 		    //Now calculate the height of the wall based on the distance from the camera
 		    int lineHeight;
 		    if(perpWallDist > 0) lineHeight = Math.abs((int)(height / perpWallDist));
 		    else lineHeight = height;
+		    
 		    //calculate lowest and highest pixel to fill in current stripe
 		    int drawStart = -lineHeight/2+ height/2;
 		    if(drawStart < 0)
@@ -108,6 +110,7 @@ public class Screen
 		    int drawEnd = lineHeight/2 + height/2;
 		    if(drawEnd >= height) 
 		    	drawEnd = height - 1;
+		    
 		    //add a texture
 		    int texNum = map[mapX][mapY] - 1;
 		    double wallX;//Exact position of where wall was hit
